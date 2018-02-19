@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.davidson</groupId>
+    <artifactId>acb_api</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>acb_batch</module>
+        <module>acb_scripts</module>
+        <module>acb_server</module>
+        <module>acb_domains</module>
+    </modules>
+
+    <!--TODO -->
+    <!--<scm>-->
+    <!--<connection>scm:git:git@github.com:eleongithub/doctolib.git</connection>-->
+    <!--<url>scm:git:git@github.com:eleongithub/doctolib.git</url>-->
+    <!--<developerConnection>scm:git:git@github.com:eleongithub/doctolib.git</developerConnection>-->
+    <!--</scm>-->
+
+    <!--TODO -->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot.version>1.5.7.RELEASE</spring-boot.version>
+        <apache-lombok.version>1.16.20</apache-lombok.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <apache-common-lang.version>3.5</apache-common-lang.version>
+        <aspectj.version>1.8.13</aspectj.version>
+        <h2database.version>1.4.196</h2database.version>
+        <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+        <flyway.version>4.2.0</flyway.version>
+        <jacoco.version>0.7.9</jacoco.version>
+        <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+        <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
+    </properties>
+
+    <!--TODO -->
+    <distributionManagement>
+        <repository>
+
+        </repository>
+
+        <snapshotRepository>
+
+        </snapshotRepository>
+
+    </distributionManagement>
+
+    <!--TODO -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- Apache Lombok (https://projectlombok.org/) pour optimiser les getter/setter, les builder, etc... -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${apache-lombok.version}</version>
+            </dependency>
+
+            <!-- Configuration de la documentation de l'API avec Swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- Import des scripts SQL -->
+            <dependency>
+                <groupId>com.syscom</groupId>
+                <artifactId>db-scripts</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Import de la couche Service de l'application -->
+
+            <!-- Jar PostgreSQl pour la connexion à la base de données -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+
+            <!-- Versionning de Script SQL avec Flyway -->
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+
+            <!-- Interface UI de l'API avec Swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
