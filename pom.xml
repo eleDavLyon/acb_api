@@ -13,6 +13,7 @@
         <module>acb_server</module>
     </modules>
 
+    <!-- Repository Github pour stocker le code du poc -->
     <scm>
         <connection>scm:git:git@github.com:eleDavLyon/acb_api.git</connection>
         <url>scm:git:git@github.com:eleDavLyon/acb_api.git</url>
@@ -45,6 +46,7 @@
         </sonar.coverage.exclusions>
     </properties>
 
+    <!-- Repository Nexus pour stocker les livrables de l'application -->
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>

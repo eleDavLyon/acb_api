@@ -3,6 +3,8 @@ package fr.davidson.acb.business.service.impl;
 import fr.davidson.acb.business.config.CustomMustacheConfiguration;
 import fr.davidson.acb.business.domains.dto.AlerteCompteBancaireDto;
 import fr.davidson.acb.business.service.MailService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -22,6 +24,8 @@ import java.util.Map;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class MailServiceImpl implements MailService {
+
+    private static final Logger log = LoggerFactory.getLogger(MailServiceImpl.class);
 
     @Autowired
     private MessageSource messageSource;
@@ -61,7 +65,8 @@ public class MailServiceImpl implements MailService {
             mailSender.send(mimeMessage);
             result = true;
         } catch (Exception exception) {
-//          TODO  throw new TechniqueException(messageSource.getMessage("erreur.envoi.mail.technique", null, null), exception);
+            result = false;
+            log.error("Erreur lors de l'envoi du mail"); // TODO Gérer avec une exception technique mieux décrite.
         }
         return result;
     }

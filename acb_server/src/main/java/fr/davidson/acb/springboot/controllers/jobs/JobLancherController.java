@@ -8,6 +8,7 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,12 +26,12 @@ public class JobLancherController {
     @Value("${input.file.dir}")
     private String inputDir;
 
-    @RequestMapping("/launchImportAlertCompte")
-    public String handle() throws Exception {
+    @RequestMapping("/launchImportAlertCompte/{filename}")
+    public String handle(@PathVariable("filename") String filename) throws Exception {
         Logger logger = LoggerFactory.getLogger(this.getClass());
         try {
             JobParameters jobParameters = new JobParametersBuilder()
-                    .addString(FILE_PATH, inputDir+"/alerte-compte-bancaire.csv")
+                    .addString(FILE_PATH, inputDir+filename)
                     .addLong("time",System.currentTimeMillis())
                     .toJobParameters();
             jobLauncher.run(importAlerteCompteBancaire, jobParameters);

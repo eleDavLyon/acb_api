@@ -22,8 +22,5 @@ public class AlerteCompteBancaireItemProcessorTest extends AbstractBatchTest {
                 .build();
         alerteCompteBancaireItemProcessor.process(alerteCompteBancaireDto);
 //        TODO
-//        assertNotNull();
-//        assertEquals();
-//        assertEquals();
     }
 }
