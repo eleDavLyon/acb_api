@@ -40,11 +40,11 @@ Spring REST fournit les annotations pour contruire les façades REST :
 Le traitement Batch est dans le package fr.davidson.acb.springbatch.
 Il est composé de :
  - plusieurs steps : les steps sont les étapes de traitement des fichiers CSV.
- AlerteCompteBancaireItemReader : lit les lignes du fichier et les convertit en Objet Java
- AlerteCompteBancaireItemProcessor :  traite chaque objet Java. Il fait appel au bean Service des mails pour pusher le mail correspondant à chaque ligne du fichier.
- AlerteCompteBancaireItemWriter : il stocke en BDD les données après l'envoi des mails.  Nous utilison du JdbcTeplate pour être au plus proche de la BDD.
- - un listener JobCompletionNotificationListener : il est exécuter à la fin du job en cas de succès. Il renseigne sur le nombre d'alertes stockées en bdd.
- - une configuration BatchAlerteCompteBancaireConfiguration : cette classe configure le batch avec l'enchainement des steps.
+ ⋅⋅⋅AlerteCompteBancaireItemReader : lit les lignes du fichier et les convertit en Objet Java
+ ⋅⋅⋅AlerteCompteBancaireItemProcessor :  traite chaque objet Java. Il fait appel au bean Service des mails pour pusher le mail correspondant à chaque ligne du fichier.
+ ⋅⋅⋅AlerteCompteBancaireItemWriter : il stocke en BDD les données après l'envoi des mails.  Nous utilison du JdbcTeplate pour être au plus proche de la BDD.
+ ⋅⋅⋅JobCompletionNotificationListener (un listener) : il est exécuter à la fin du job en cas de succès. Il renseigne sur le nombre d'alertes stockées en bdd.
+ ⋅⋅⋅BatchAlerteCompteBancaireConfiguration : cette classe configure le batch avec l'enchainement des steps.
  La configuration se fait via les annotations Spring et non les fichiers de configuration XML.  
 
 ### Le traitement Métier #
